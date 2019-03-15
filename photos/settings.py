@@ -76,13 +76,13 @@ WSGI_APPLICATION = 'photos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = 
+
    
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'photos',
-        'USER': 'personal',
+        'NAME': 'personal',
+        'USER': 'wecode',
     'PASSWORD':'  ',
     }
 }
