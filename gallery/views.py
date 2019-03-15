@@ -47,7 +47,7 @@ def convert_dates(dates):
       day = days[day_number]
       return day
 
-     def gallery_of_day(request):
+def gallery_of_day(request):
     date = dt.date.today()
     return render(request, 'all-gallery/today-gallery.html', {"date": date,}) 
 
