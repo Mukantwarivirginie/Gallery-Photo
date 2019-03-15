@@ -45,3 +45,7 @@ def convert_dates(dates):
     # Returning the actual day of the week
       day = days[day_number]
       return day
+
+     def gallery_of_day(request):
+    date = dt.date.today()
+    return render(request, 'all-gallery/today-gallery.html', {"date": date,}) 
