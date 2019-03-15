@@ -8,7 +8,7 @@ def welcome(request):
     return HttpResponse('Welcome to the Gallery-Photo')
 def gallery_of_day(request):
       date = dt.date.today()
-      gallery = Article.todays_gallery()
+      gallery = Category.todays_gallery()
       return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
 
 def past_days_gallery(request,past_date):
@@ -69,3 +69,26 @@ def past_days_gallery(request, past_date):
         return redirect(news_of_day)
 
     return render(request, 'all-gallery/past-gallery.html', {"date": date})
+
+
+
+
+def search_results(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-gallery/search.html',{"message":message,"articles": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-gallery/search.html',{"message":message})
+
+def article(request,article_id):
+    try:
+        article = Article.objects.get(id = article_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-gallery/article.html", {"article":article})
