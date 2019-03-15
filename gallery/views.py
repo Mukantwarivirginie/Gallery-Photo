@@ -8,6 +8,8 @@ def welcome(request):
     return HttpResponse('Welcome to the Gallery-Photo')
 def gallery_of_day(request):
       date = dt.date.today()
+      gallery = Article.todays_gallery()
+      return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
 
 def past_days_gallery(request,past_date):
         # Converts data from the string Url
