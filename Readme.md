@@ -5,9 +5,6 @@ Gallery-Photo
 ## Author name
 virginie mukantwari
 
-## Description
-
-
 ## Technology used
 python3.6 manage.py runserver
 pip install django==1.11
