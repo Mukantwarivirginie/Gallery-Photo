@@ -2,38 +2,40 @@ from django.shortcuts import render,redirect
 import datetime as dt
 from django.shortcuts import render
 from django.http  import HttpResponse
+from .models import Image
+
 
 
 
 # Create your views here.
 def welcome(request):
     return render(request, 'welcome.html')
-    # return HttpResponse('Welcome to the Gallery-Photo')
+  
 
 def gallery_of_day(request):
       date = dt.date.today()
-      gallery = Images.objects.all()
-      return render(request, 'all-gallery/today-gallery.html', {"date": date,"gallery":gallery})
+      photos = Image.objects.all()
+      return render(request, 'all-gallery/todays-gallery.html', {"date": date,"photos":photos})
 
 
 def image(request,image_id):
     try:
-        image = Image.objects.get(id = image_id)
+        photo = Image.objects.get(id = image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"all-images/images.html", {"image":image})
+    return render(request,"all-gallery/image.html", {"image":photo})
 
 
 
 
 def search_results(request):
 
-    if 'article' in request.GET and request.GET["article"]:
-        search_term = request.GET.get("article")
-        searched_articles = Article.search_by_title(search_term)
-        message = f"{search_term}"
+    if 'category' in request.GET and request.GET["category"]:
+        name = request.GET.get("category")
+        searched_categories = Image.search_by_category(name)
+        message = f"{name}"
 
-        return render(request, 'all-gallery/search.html',{"message":message,"articles": searched_articles})
+        return render(request, 'all-gallery/search.html',{"message":message,"categories": searched_categories})
 
     else:
         message = "You haven't searched for any term"

@@ -1,0 +1,24 @@
+{%extends 'photos/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+    
+   <div class="row">
+    <img src="{{ image.picture.url }}" class="img-responsive img">
+   </div> 
+
+   <div class="row">
+        <h2 class="text-center"> link: {{ image.picture }} </h2> 
+      <h2 class="text-center"> {{ image._name }} </h2>
+      <h2 class="text-center"> {{ image.description }} </h2>
+      <h2 class="text-center"> {{ image.location }} </h2>
+      <h2 class="text-center"> {{ image.category }} </h2> 
+      <img src="{{ image.picture.url }}" class="img-responsive img">
+    </div>
+ 
+    </div>
+   </div>
+ 
+
+ {% endblock %}

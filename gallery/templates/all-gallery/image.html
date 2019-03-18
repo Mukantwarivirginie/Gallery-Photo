@@ -1,0 +1,21 @@
+{%extends 'all-gallery/base.html'%} 
+{% block content %}
+<div class="container">
+
+ 
+
+
+
+
+  
+      <div class="col-sm-6 col-md-3 search" >
+          <p>{{image.name}}</p>
+          <h1> {{ image.description }} </h1>
+          <h1> {{ image.location }} </h1>
+          
+          <img src="{{ image.picture.url }}" class="img-responsive img" alt="Image" >
+      </div>
+  
+
+</div>
+{% endblock %}
